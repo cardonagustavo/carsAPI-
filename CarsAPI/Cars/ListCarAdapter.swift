@@ -23,7 +23,8 @@ class ListCarAdapter: NSObject, ListCarAdapterProtocol {
         self.collectionView?.delegate = self
         self.collectionView?.dataSource = self
         self.setCarsLayout()
-        //TODO - Register tipes of cells
+        self.collectionView?.register(UINib(nibName: "CarCollectionViewCell", bundle: .main), forCellWithReuseIdentifier:  "CarCollectionViewCell")
+
     }
     
     func didSelectHandler(_ handler: @escaping (_ car: Car) -> Void ) {
@@ -154,4 +155,13 @@ El DataSource tiene metodos como la cantidad de items segun la seccion, la canti
  0              n
  
  
+ */
+
+/*
+ Pattern Estrategy:
+ 1- Creacion
+ 
+ alineacion
+ relacion
+ posicion
  */

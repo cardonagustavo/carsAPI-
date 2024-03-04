@@ -10,10 +10,17 @@ protocol CarsViewDelegate: AnyObject {
 
 class CarsView: UIView {
     
-    @IBOutlet private weak var clvCars: UICollectionView!
-    weak var delegate: CarsViewDelegate?
+    private lazy var clvCars: UICollectionView = {
+        let clv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+        clv.backgroundColor = .white
+        clv.showsVerticalScrollIndicator = false
+        clv.translatesAutoresizingMaskIntoConstraints = false
+        return clv
+    }()
     
-    var listAdapter: ListCarAdapterProtocol = ListCarAdapter()
+ //   @IBOutlet private weak var clvCars: UICollectionView!
+    weak var delegate: CarsViewDelegate?
+    private var listAdapter: ListCarAdapterProtocol?
     /*
      Ratio: "Image ratio" usually refers to the proportional relationship between the width and height of an image. It describes how many times wider an image is compared to its height or vice versa. For example, an image with a ratio of 4:3 means that its width is 4 units for every 3 units of height.
      - When you're displaying images in a UICollectionView, you might want to maintain the aspect ratio of the images so they don't appear stretched or distorted. This means ensuring that the width-to-height ratio of each image remains the same as the original image.
@@ -23,17 +30,47 @@ class CarsView: UIView {
     //        didSet {
     //            self.clvCars.reloadData()
     
+    init(listAdapter: ListCarAdapterProtocol) {
+        self.listAdapter = listAdapter
+        super.init(frame: .zero)
+        self.addElements()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.addElements()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.addElements()
+    }
+    
+    
     func setupAdapters() {
-        self.listAdapter.setCollectionView(self.clvCars)
+        self.listAdapter?.setCollectionView(self.clvCars)
         
-        self.listAdapter.didSelectHandler {car in
+        self.listAdapter?.didSelectHandler {car in
         self.delegate?.carsView(self, didSelectCar: car)
         }
     }
     
     func reloadData(_ datasource: [Car]) {
-        self.listAdapter.datasource = datasource
+        self.listAdapter?.datasource = datasource
         self.clvCars.reloadData()
+    }
+    
+    func addElements() {
+        self.backgroundColor = .white
+        self.addSubview(self.clvCars)
+        
+        
+        NSLayoutConstraint.activate([
+            self.clvCars.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 0),
+            self.clvCars.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.clvCars.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.clvCars.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
     }
 }
 
