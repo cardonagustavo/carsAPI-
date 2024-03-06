@@ -17,6 +17,11 @@ class CarsView: UIView {
         clv.translatesAutoresizingMaskIntoConstraints = false
         return clv
     }()
+    /*
+     .Zero: lo usamos para indicar a la la UI que el punto inicial del proyecto va a ser 0 en X y 0 en Y.
+     translatesAutoresizingMaskIntoConstraints:  es ta linea es la que va a permitir mostrar el collection usando el .zero
+     */
+    
     
  //   @IBOutlet private weak var clvCars: UICollectionView!
     weak var delegate: CarsViewDelegate?
@@ -71,6 +76,26 @@ class CarsView: UIView {
             self.clvCars.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             self.clvCars.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
+        /*
+        creamos este metodo y lo utilizaremos para poder agregar todos los componentes UI, todos los hijos
+        IMPORTANTE: si agregamos constraints, antes de agregarlo como hijo al elemento dentro de una vista, sin que este elemento tenga un padre que lo contenga entonces generara un crash, el orden siempre tiene que ser este creacion, configuracion, agregarlos como hijo y despues agregamos constraints, estos constraints que tiene que ser en este orden tiene que ser de la siguiente manera, son unicamente los constraints de ubicacion, porque los constraints de dimension, width como height los podemos agregar en la declaracion de la funcion implementada, es decir si queremos que el collectionView tenga una altura constante podemos agregar ese constraint por codigo en la creacion
+        Los unicos constraints que podemos agregar en la creacion (funcion implementada, funcion de construccion) son los de dimension, pero si queremos agregar constraints de alineacion, de relacion o de posicion tienen que ser agregados despues de que ese elemento sea puesto como hijo de alguien
+        self.addSubview(self.clvCars) la ponemos como hijo, agregamos una subview, es decir a CarView la vamos a poner como padre del collectionView/clvCars
+        Dos maneras de agg constraints, manera comun, con anchorConstraints, pero esta tendra dos utilidades, activacion de constraints masivos y de independientes
+        NSLayoutConstraint.activate: Activar constraints de manera masiva y nos pedira que le enviemos un array de constraints
+        Si tenemos varios elementos y queremos agregar constraints a todos por medio de la funion activate de NSLayoutConstraint va a ser muy dificil luego alterar o modificar constraints de algun elemento por ejemplo el bottom para la aparicion del teclado, asi que si queremos retener un constraint private var bottomAnchorClv: NSLayoutConstraint?
+         
+         NSLayoutConstraint.activate([...]): Este método se utiliza para activar una matriz de constraints a la vez. Es una forma conveniente de aplicar múltiples constraints simultáneamente.
+         
+         self.clvCars.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 0): Este constraint establece que el borde superior de la colección de vistas (clvCars) debe ser igual al borde superior seguro (safeAreaLayoutGuide.topAnchor) del contenedor, con una separación adicional de 0 puntos. El safeAreaLayoutGuide es un área segura que asegura que las vistas no se superpongan con la barra de estado, la barra de navegación, la barra de pestañas o cualquier otra barra visible en la pantalla.
+         
+         self.clvCars.leadingAnchor.constraint(equalTo: self.leadingAnchor): Este constraint establece que el borde izquierdo de la colección de vistas (clvCars) debe ser igual al borde izquierdo del contenedor.
+         
+         self.clvCars.trailingAnchor.constraint(equalTo: self.trailingAnchor): Este constraint establece que el borde derecho de la colección de vistas (clvCars) debe ser igual al borde derecho del contenedor.
+         
+         self.clvCars.bottomAnchor.constraint(equalTo: self.bottomAnchor): Este constraint establece que el borde inferior de la colección de vistas (clvCars) debe ser igual al borde inferior del contenedor.
+         */
+        
     }
 }
 
@@ -101,4 +126,4 @@ class CarsView: UIView {
 
 
 
-
+//robet c martin autor

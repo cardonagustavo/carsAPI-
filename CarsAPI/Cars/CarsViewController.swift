@@ -8,8 +8,21 @@
 import UIKit
 
 class CarsViewController: UIViewController {
-    
+//    weak var delegate: CarsViewDelegate?
     private var carsView: CarsView //? { self.view as? CarsView }
+    
+    
+    /*
+     private var carsView: CarsView //? { self.view as? CarsView
+     }: This line declares a variable carsView of type CarsView,
+     which seems to be related to a view in the code. The comment
+     //? { self.view as? CarsView } suggests that it might be an
+     optional variable, initialized by casting self.view
+     (presumably a property of the current class) to type
+     CarsView. The as? operator is used for conditional type
+     casting, returning an optional value of the specified type.
+     */
+    
     private lazy var webSerice = CarsWebService()  //podemos inyectarlo en la inicializacion de la contruccion.
     
     override func viewDidLoad() {
@@ -30,6 +43,9 @@ class CarsViewController: UIViewController {
         self.carsView = carView
         super.init(nibName:  nil, bundle: nil)
     }
+    /*
+     El nibName: se usa pra la construccion por xml
+     */
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -45,10 +61,3 @@ extension CarsViewController: CarsViewDelegate {
 
 //Compositional layout
 
-extension CarsViewController {
-    class func build() -> CarsViewController {
-        let  carView = CarsView(listAdapter: ListCarAdapter())
-        let controller = CarsViewController(carView: carView)
-        return controller
-    }
-}

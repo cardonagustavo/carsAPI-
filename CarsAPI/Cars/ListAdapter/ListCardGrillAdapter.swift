@@ -1,17 +1,10 @@
-//  ListCarAdapter.swift
+//  ListCardGrillAdapter.swift
 //  CarsAPI
-//  Created by Gustavo Adolfo Cardona Quintero on 25/02/24.
+//  Created by Gustavo Adolfo Cardona Quintero on 6/03/24.
 
 import UIKit
 
-protocol ListCarAdapterProtocol {
-    var datasource: [Car] { get set }
-    
-    func setCollectionView(_ collectionView: UICollectionView)
-    func didSelectHandler(_ handler: @escaping (_ car: Car) -> Void )
-}
-
-class ListCarAdapter: NSObject, ListCarAdapterProtocol {
+class ListCardGrillAdapter: NSObject, ListCarAdapterProtocol {
     
     private unowned var collectionView: UICollectionView?
     private var didSelect: ((_ car: Car) -> Void)?
@@ -23,8 +16,7 @@ class ListCarAdapter: NSObject, ListCarAdapterProtocol {
         self.collectionView?.delegate = self
         self.collectionView?.dataSource = self
         self.setCarsLayout()
-        self.collectionView?.register(UINib(nibName: "CarCollectionViewCell", bundle: .main), forCellWithReuseIdentifier:  "CarCollectionViewCell")
-
+        self.collectionView?.register(UINib(nibName: "CarsCollectionViewCellRow", bundle: .main), forCellWithReuseIdentifier:  "CarsCollectionViewCellRow")
     }
     
     func didSelectHandler(_ handler: @escaping (_ car: Car) -> Void ) {
@@ -39,7 +31,7 @@ class ListCarAdapter: NSObject, ListCarAdapterProtocol {
             
 //            3 - Definir un grupo en horizontal o vertical segun direccion del scroll, es un conjunto de items.
             let layoutGroup = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(.leastNormalMagnitude))
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroup, subitem: item, count: 3)
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroup, subitem: item, count: 1)
             group.interItemSpacing = .fixed(20)
             
 //            4 - Definir la seccion que es un cojunto de grupos
@@ -80,7 +72,7 @@ class ListCarAdapter: NSObject, ListCarAdapterProtocol {
  The UICollectionViewCompositionalLayout object is created using the section defined earlier and assigned to the CollectionView.
 */
  
-extension ListCarAdapter: UICollectionViewDataSource {
+extension ListCardGrillAdapter: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.datasource.count
@@ -104,7 +96,7 @@ extension ListCarAdapter: UICollectionViewDataSource {
     }
 }
     
-    extension ListCarAdapter: UICollectionViewDelegate {
+    extension ListCardGrillAdapter: UICollectionViewDelegate {
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             self.didSelect?(self.datasource[indexPath.row])
         }
@@ -159,9 +151,40 @@ El DataSource tiene metodos como la cantidad de items segun la seccion, la canti
 
 /*
  Pattern Estrategy:
- 1- Creacion
+
+ Constraints de Posición: Establecen la ubicación absoluta o relativa de
+ un elemento en relación con su contenedor padre o con otros
+ elementos.
+ Punto de referencia (0.0): La esquina superior izquierda del
+ contenedor padre.
+
+ Constraints de Alineación: Establecen la alineación de los bordes o centros
+ de los elementos con respecto a otros elementos o al
+ contenedor padre.
+
+ Constraints de Relación: Definen relaciones entre elementos, como la
+ igualdad de anchura o altura, proporciones, o la fijación de
+ una dimensión a un valor específico.
+
+ Constraints de Dimensión: Especifican el tamaño de los elementos,
+ definiendo su anchura y altura, ya sea de forma fija o
+ relativa a otros elementos.
+
+ Constraints Intrínsecos: Son los constraints determinados por las
+ características intrínsecas del contenido de un elemento,
+ como su contenido de texto o tamaño de imagen.
+
+ Constraints Físicos: Definición: Restricciones geométricas aplicadas a los
+ elementos de la interfaz de usuario para definir su posición
+ y tamaño de forma relativa. Top, Bottom, Leading, Trailing.
  
- alineacion
- relacion
- posicion
+ Constraints Lógicos: Son aquellos que se definen de manera
+ programática o a través de reglas lógicas en lugar de
+ establecerse manualmente en la interfaz de usuario.
+ 
+ Aspect Ratio: Constraint que define la relación de aspecto
+ entre la anchura y la altura de un elemento.
+
+ Multiplayer:
  */
+
