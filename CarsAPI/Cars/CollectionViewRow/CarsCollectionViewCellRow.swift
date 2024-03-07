@@ -8,14 +8,13 @@ import UIKit
 
 class CarsCollectionViewCellRow: UICollectionViewCell {
     
-    @IBOutlet private weak var imgCar: UIImageView!
-    @IBOutlet private weak var labelName: UILabel!
-    @IBOutlet private weak var labeReleaseYear: UILabel!
-    
+    @IBOutlet weak var imgMoviesRow: UIImageView!
+    @IBOutlet weak var LabelNameMoviesRow: UILabel!
+    @IBOutlet weak var LabelRealiseYearRow: UILabel!
     
     fileprivate func updateDataWith(_ car: Car) {
-            self.labelName.text = car.fullName
-            self.labeReleaseYear.text = car.realeaseYear
+            self.LabelNameMoviesRow.text = car.fullName
+            self.LabelRealiseYearRow.text = car.realeaseYear
         }
 }
     /*
@@ -43,14 +42,14 @@ class CarsCollectionViewCellRow: UICollectionViewCell {
          identifier for dequeuing cells in a UICollectionView.
          */
         
-        class func buildIN(_ collectionView: UICollectionView, in indexPath: IndexPath, with car: Car) -> Self {
+        class func buildIN(_ collectionView: UICollectionView, in indexPath: IndexPath, with car: Car) -> CarsCollectionViewCellRow {
             
             //            let car = self.datasource[indexPath.item]
             //        print(car)
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.identifier, for: indexPath) as? Self
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.identifier, for: indexPath) as? CarsCollectionViewCellRow
             cell?.updateDataWith(car)
             //            cell?.updateDataWith(self.datasource[indexPath.item])
-            return cell ?? Self()
+            return cell ?? CarsCollectionViewCellRow()
             
         }
         /*
@@ -86,3 +85,8 @@ class CarsCollectionViewCellRow: UICollectionViewCell {
          */
     }
 
+/*
+ //    @IBOutlet private weak var imgCarRow: UIImageView!
+ //    @IBOutlet private weak var labelNameRow: UILabel!
+ //    @IBOutlet private weak var labeReleaseYearRow: UILabel!
+ */
