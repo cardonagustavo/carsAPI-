@@ -4,9 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,98 +20,5 @@
             </objects>
             <point key="canvasLocation" x="-1688" y="-204"/>
         </scene>
-        <!--Cars View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="CarsViewController" customModule="CarsAPI" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="CarsView" customModule="CarsAPI" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OAm-zT-OCf" userLabel="clv Cars">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pac-4h-v8v">
-                                    <size key="itemSize" width="181" height="329"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CarsCollectionViewCell" id="YNS-NV-ilI" userLabel="CarsCollectionViewCell" customClass="CarsCollectionViewCell" customModule="CarsAPI" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="181" height="329"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fRR-iU-Ct3">
-                                            <rect key="frame" x="0.0" y="0.0" width="181" height="329"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i8D-Oa-Z7t">
-                                                    <rect key="frame" x="0.0" y="0.0" width="181" height="253.33333333333334"/>
-                                                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="i8D-Oa-Z7t" secondAttribute="height" multiplier="1:1.4" id="qgy-oU-UQD"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c47-mb-hJE">
-                                                    <rect key="frame" x="0.0" y="284" width="181" height="21.666666666666686"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nmr-OQ-o9t">
-                                                    <rect key="frame" x="0.0" y="257.33333333333326" width="181" height="21.666666666666686"/>
-                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
-                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="i8D-Oa-Z7t" firstAttribute="top" secondItem="fRR-iU-Ct3" secondAttribute="top" id="CEV-WH-WNf"/>
-                                                <constraint firstItem="c47-mb-hJE" firstAttribute="top" secondItem="Nmr-OQ-o9t" secondAttribute="bottom" constant="5" id="CFV-7R-b1b"/>
-                                                <constraint firstAttribute="trailing" secondItem="Nmr-OQ-o9t" secondAttribute="trailing" id="Gbn-Ju-Wj1"/>
-                                                <constraint firstItem="i8D-Oa-Z7t" firstAttribute="leading" secondItem="fRR-iU-Ct3" secondAttribute="leading" id="HgW-4A-XFl"/>
-                                                <constraint firstItem="Nmr-OQ-o9t" firstAttribute="top" secondItem="i8D-Oa-Z7t" secondAttribute="bottom" constant="4" id="LvG-rS-yOi"/>
-                                                <constraint firstAttribute="bottom" secondItem="c47-mb-hJE" secondAttribute="bottom" id="MaH-pY-W7h"/>
-                                                <constraint firstItem="c47-mb-hJE" firstAttribute="leading" secondItem="fRR-iU-Ct3" secondAttribute="leading" id="QOq-LC-ZuU"/>
-                                                <constraint firstAttribute="trailing" secondItem="i8D-Oa-Z7t" secondAttribute="trailing" id="aqU-Iu-hFQ"/>
-                                                <constraint firstItem="Nmr-OQ-o9t" firstAttribute="leading" secondItem="fRR-iU-Ct3" secondAttribute="leading" id="fJK-RY-wQb"/>
-                                                <constraint firstAttribute="trailing" secondItem="c47-mb-hJE" secondAttribute="trailing" id="fOQ-oN-dUG"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="181" height="329"/>
-                                        <connections>
-                                            <outlet property="imgCar" destination="i8D-Oa-Z7t" id="0ru-oo-jAz"/>
-                                            <outlet property="labeReleaseYear" destination="Nmr-OQ-o9t" id="2gU-Dd-fwP"/>
-                                            <outlet property="labelName" destination="c47-mb-hJE" id="gOf-jJ-Jc1"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OAm-zT-OCf" secondAttribute="bottom" id="GVb-1y-I1B"/>
-                            <constraint firstItem="OAm-zT-OCf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RDJ-lh-lWi"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OAm-zT-OCf" secondAttribute="trailing" id="Xwr-bd-YQX"/>
-                            <constraint firstItem="OAm-zT-OCf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fZ5-Qj-58s"/>
-                        </constraints>
-                        <connections>
-                            <outlet property="clvCars" destination="OAm-zT-OCf" id="VFE-v1-cJQ"/>
-                        </connections>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-873" y="-203"/>
-        </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>

@@ -12,8 +12,8 @@ struct CarsViewRepresentable: UIViewControllerRepresentable {
         
     }
     
-    func makeUIViewController(context: Context) -> some UIViewController{
-        CarsViewController.buildGrill()
+    func makeUIViewController(context: Context) -> some UIViewController {
+       CarsViewController.buildGrill()
 //        CarsViewController.buildSimple()
     }
 }

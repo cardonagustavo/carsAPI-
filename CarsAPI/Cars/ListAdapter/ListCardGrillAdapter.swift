@@ -16,7 +16,7 @@ class ListCardGrillAdapter: NSObject, ListCarAdapterProtocol {
         self.collectionView?.delegate = self
         self.collectionView?.dataSource = self
         self.setCarsLayout()
-        self.collectionView?.register(UINib(nibName: "CarsCollectionViewCellRow", bundle: .main), forCellWithReuseIdentifier:  "CarsCollectionViewCellRow")
+        self.collectionView?.register(UINib(nibName: "CarsCollectionViewCellRow", bundle: .main), forCellWithReuseIdentifier: "CarsCollectionViewCellRow")
     }
     
     func didSelectHandler(_ handler: @escaping (_ car: Car) -> Void ) {
@@ -86,7 +86,7 @@ extension ListCardGrillAdapter: UICollectionViewDataSource {
     //    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        CarsCollectionViewCell.buildIN(collectionView, in: indexPath, with: self.datasource[indexPath.item])
+        CarsCollectionViewCellRow.buildIN(collectionView, in: indexPath, with: self.datasource[indexPath.item])
         /*
          This method is also required by the UICollectionViewDataSource protocol. It's responsible for configuring and returning a cell for a specific index path in the collection view. Here's what it does:
          Retrieves the car object from the datasource array based on the indexPath.item. This represents the index of the item (cell) within the section.

@@ -11,5 +11,6 @@ class AppNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewControllers = [CarsViewController.buildGrill()]
+//        self.viewControllers = [CarsViewController.buildSimple()]
     }
 }

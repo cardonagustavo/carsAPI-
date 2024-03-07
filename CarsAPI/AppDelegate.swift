@@ -12,30 +12,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        CarsWebService().fetch {arrayCarsDTO in
-            /*
-             var arrayCars = [Car]()
-             for dto in arrayCarsDTO {
-             arrayCars.append(dto: dto)
-             }
-             let arrayCars = arrayCarsDTO.map { dto in
-             return Car(dto: dto)
-             }
-             //This block of code appears to be commented out, but it seems to be attempting to loop through each CarDTO object in arrayCarsDTO, create a new Car object for each one using the initializer Car(dto: dto), and then append it to the arrayCars array. However, the syntax arrayCars.append(dto: dto) is incorrect; it should be arrayCars.append(Car(dto: dto)).
-              
-             
-             let arrayCars = arrayCarsDTO.map({ Car(dto: $0) })
-             print(arrayCars)
-             
-            //This block of code is also commented out. It uses the map function to transform each CarDTO element in arrayCarsDTO into a Car object using the initializer Car(dto: dto).
-             
-             */
-            
-            let arrayCars = arrayCarsDTO.toCars
-            //This line creates a new array arrayCars by using the toCars computed property on the arrayCarsDTO. The toCars property converts each element of arrayCarsDTO from type CarDTO to type Car using the mapping defined in the extension.
-            //
-            print(arrayCars)
-        }
+//        CarsWebService().fetch {arrayCarsDTO in
+//            /*
+//             var arrayCars = [Car]()
+//             for dto in arrayCarsDTO {
+//             arrayCars.append(dto: dto)
+//             }
+//             let arrayCars = arrayCarsDTO.map { dto in
+//             return Car(dto: dto)
+//             }
+//             //This block of code appears to be commented out, but it seems to be attempting to loop through each CarDTO object in arrayCarsDTO, create a new Car object for each one using the initializer Car(dto: dto), and then append it to the arrayCars array. However, the syntax arrayCars.append(dto: dto) is incorrect; it should be arrayCars.append(Car(dto: dto)).
+//              
+//             
+//             let arrayCars = arrayCarsDTO.map({ Car(dto: $0) })
+//             print(arrayCars)
+//             
+//            //This block of code is also commented out. It uses the map function to transform each CarDTO element in arrayCarsDTO into a Car object using the initializer Car(dto: dto).
+//             
+//             */
+//            
+//            let arrayCars = arrayCarsDTO.toCars
+//            //This line creates a new array arrayCars by using the toCars computed property on the arrayCarsDTO. The toCars property converts each element of arrayCarsDTO from type CarDTO to type Car using the mapping defined in the extension.
+//            //
+//            print(arrayCars)
+//        }
         
         return true
     }
