@@ -26,6 +26,7 @@ class ListCardGrillAdapter: NSObject, ListCarAdapterProtocol {
         func setCarsLayout() {
 //            1 - Definir layout con dimencion de la acelda
             let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(.leastNormalMagnitude))
+            
 //            2 - Definir layout como un item
             let item = NSCollectionLayoutItem(layoutSize: layoutSize)
             

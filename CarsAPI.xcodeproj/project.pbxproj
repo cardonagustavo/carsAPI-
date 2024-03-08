@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		291548EE2B9BA35200996B2C /* SearchAdapterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291548ED2B9BA35200996B2C /* SearchAdapterProtocol.swift */; };
+		291548F02B9BA35D00996B2C /* ListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291548EF2B9BA35D00996B2C /* ListAdapter.swift */; };
+		291548F72B9BAC5400996B2C /* SearchCardByInfoAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291548F62B9BAC5400996B2C /* SearchCardByInfoAdapter.swift */; };
+		291548F92B9BB70000996B2C /* SearchCardByNameYearAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291548F82B9BB70000996B2C /* SearchCardByNameYearAdapter.swift */; };
 		294ADEFE2B990D2A00E53B51 /* CarsViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294ADEFD2B990D2A00E53B51 /* CarsViewRepresentable.swift */; };
 		294ADF012B99198800E53B51 /* ListCarAdapterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294ADF002B99198800E53B51 /* ListCarAdapterProtocol.swift */; };
 		294ADF032B991A9000E53B51 /* ListCardGrillAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294ADF022B991A9000E53B51 /* ListCardGrillAdapter.swift */; };
@@ -30,6 +34,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		291548ED2B9BA35200996B2C /* SearchAdapterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAdapterProtocol.swift; sourceTree = "<group>"; };
+		291548EF2B9BA35D00996B2C /* ListAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAdapter.swift; sourceTree = "<group>"; };
+		291548F62B9BAC5400996B2C /* SearchCardByInfoAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardByInfoAdapter.swift; sourceTree = "<group>"; };
+		291548F82B9BB70000996B2C /* SearchCardByNameYearAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardByNameYearAdapter.swift; sourceTree = "<group>"; };
 		294ADEFD2B990D2A00E53B51 /* CarsViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsViewRepresentable.swift; sourceTree = "<group>"; };
 		294ADF002B99198800E53B51 /* ListCarAdapterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCarAdapterProtocol.swift; sourceTree = "<group>"; };
 		294ADF022B991A9000E53B51 /* ListCardGrillAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCardGrillAdapter.swift; sourceTree = "<group>"; };
@@ -65,6 +73,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		291548EC2B9BA33B00996B2C /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				291548EF2B9BA35D00996B2C /* ListAdapter.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		291548F42B9BA43100996B2C /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				294ADEFF2B99180500E53B51 /* ListAdapter */,
+				291548F52B9BA54000996B2C /* SearchAdapter */,
+			);
+			path = Adapters;
+			sourceTree = "<group>";
+		};
+		291548F52B9BA54000996B2C /* SearchAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				291548F62B9BAC5400996B2C /* SearchCardByInfoAdapter.swift */,
+				291548ED2B9BA35200996B2C /* SearchAdapterProtocol.swift */,
+				291548F82B9BB70000996B2C /* SearchCardByNameYearAdapter.swift */,
+			);
+			path = SearchAdapter;
+			sourceTree = "<group>";
+		};
 		294ADEFF2B99180500E53B51 /* ListAdapter */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +147,7 @@
 		297716792B891913009659BF /* CarsAPI */ = {
 			isa = PBXGroup;
 			children = (
+				291548EC2B9BA33B00996B2C /* cells */,
 				29CA89152B90E47B0043AF1D /* Others */,
 				297716962B8919FD009659BF /* CarsWebService */,
 				297716932B8919DC009659BF /* Model */,
@@ -129,9 +165,9 @@
 		2977168E2B89194F009659BF /* Cars */ = {
 			isa = PBXGroup;
 			children = (
+				291548F42B9BA43100996B2C /* Adapters */,
 				294ADF0B2B99332100E53B51 /* CollectionViewRow */,
 				294ADF0A2B9932A200E53B51 /* CollectionViewColums */,
-				294ADEFF2B99180500E53B51 /* ListAdapter */,
 				2977168F2B89197A009659BF /* CarsView.swift */,
 				297716912B8919A5009659BF /* CarsViewController.swift */,
 				294ADEFD2B990D2A00E53B51 /* CarsViewRepresentable.swift */,
@@ -244,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				294ADF012B99198800E53B51 /* ListCarAdapterProtocol.swift in Sources */,
+				291548F92B9BB70000996B2C /* SearchCardByNameYearAdapter.swift in Sources */,
 				294ADEFE2B990D2A00E53B51 /* CarsViewRepresentable.swift in Sources */,
 				294ADF032B991A9000E53B51 /* ListCardGrillAdapter.swift in Sources */,
 				297716952B8919F7009659BF /* CarsModel.swift in Sources */,
@@ -252,10 +289,13 @@
 				29D27F852B8BB19100432CFA /* ListCarSimpleAdapter.swift in Sources */,
 				297716902B89197A009659BF /* CarsView.swift in Sources */,
 				297716982B891A28009659BF /* CarsWebService.swift in Sources */,
+				291548F02B9BA35D00996B2C /* ListAdapter.swift in Sources */,
 				2977167D2B891913009659BF /* SceneDelegate.swift in Sources */,
 				294ADF052B991CC700E53B51 /* CarsViewControllerBuilder.swift in Sources */,
+				291548EE2B9BA35200996B2C /* SearchAdapterProtocol.swift in Sources */,
 				2977169D2B8948D1009659BF /* CarsCollectionViewCell.swift in Sources */,
 				294ADF0D2B9933F600E53B51 /* CarsCollectionViewCellRow.swift in Sources */,
+				291548F72B9BAC5400996B2C /* SearchCardByInfoAdapter.swift in Sources */,
 				297716922B8919A5009659BF /* CarsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

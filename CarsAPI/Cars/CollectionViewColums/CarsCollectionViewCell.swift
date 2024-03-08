@@ -1,9 +1,6 @@
-//
 //  CarsCollectionViewCell.swift
 //  CarsAPI
-//
 //  Created by Gustavo Adolfo Cardona Quintero on 23/02/24.
-//
 
 import UIKit
 

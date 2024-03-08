@@ -136,7 +136,9 @@ extension CarsWebService {
 
 //MARK: - DTO
 /*
- unasafe variable: The term unsafe varibale to refers to an variable of this type, tendens to crash, when  make a unwraping the data consult are safe
+ unasafe variable: The term unsafe varibale to refers to an
+ variable of this type, tendens to crash, when  make a
+ unwraping the data consult are safe
  ============================================================
  Codable, Decodable, and Encodable:  are three related
  protocols in Swift's standard library that enable the
