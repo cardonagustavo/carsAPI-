@@ -10,8 +10,8 @@ import UIKit
 class AppNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewControllers = [CarsViewController.buildGrill()]
-//        self.viewControllers = [CarsViewController.buildSimple()]
+//        self.viewControllers = [CarsViewController.buildGrill()]
+        self.viewControllers = [CarsViewController.buildSimple()]
     }
     /*
      super.viewDidLoad(): Llama al método viewDidLoad() de la

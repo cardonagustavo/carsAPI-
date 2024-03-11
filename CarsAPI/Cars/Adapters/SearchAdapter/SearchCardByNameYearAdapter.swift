@@ -10,35 +10,39 @@ import UIKit
 class SearchCardByNameYearAdapter: NSObject, SearchCarAdapterProtocol {
      
     var datasource: [Car] = []
-    private var didFilter: ((_ cars: [Car]) -> Void)?
+    private var didFilter: ((_ result : [Any]) -> Void)?
     
     func setSearchBar(_ searchBar: UISearchBar) {
         searchBar.delegate = self
     }
     
-    func didFilterHandler(_ handler: @escaping ([Car]) -> Void) {
+    func didFilterHandler(_ handler: @escaping ([Any]) -> Void) {
         self.didFilter = handler
     }
-    
-    
 }
 
 
 extension SearchCardByNameYearAdapter: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        var arrayResulrt: [Car] = []
+        var arrayResult: [Any] = []
         let searchTextLowercased = searchText.lowercased()
         
         if searchTextLowercased.isEmpty {
-            arrayResulrt = self.datasource
+            arrayResult = self.datasource
         } else {
-            arrayResulrt = self.datasource.filter({
+            arrayResult = self.datasource.filter({
                 return $0.fullName.lowercased().contains(searchText.lowercased()) || $0.realeaseYear.contains(searchTextLowercased)
                 
             })
-            self.didFilter?(arrayResulrt)
+            
+            arrayResult = !arrayResult.isEmpty ? arrayResult : ["""
+            No se encontraron resultados para la busqueda de:
+            
+            \(searchText)
+            """]
         }
+        self.didFilter?(arrayResult)
     }
 }
 

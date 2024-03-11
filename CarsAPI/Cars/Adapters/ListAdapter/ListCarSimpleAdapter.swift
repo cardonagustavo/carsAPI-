@@ -9,12 +9,17 @@ class ListCarSimpleAdapter: NSObject, ListCarAdapterProtocol {
     private unowned var collectionView: UICollectionView?
     private var didSelect: ((_ car: Car) -> Void)?
     
-    var datasource = [Car]()
+    var datasource = [Any]() {
+        didSet {
+            self.datasource is [Car] ? self.setCarsLayout() : self.setErrorLayout()
+        }
+    }
     
     func setCollectionView(_ collectionView: UICollectionView) {
         self.collectionView = collectionView
         self.collectionView?.dataSource = self
         self.setCarsLayout()
+        self.collectionView?.register(UINib(nibName: "ErrorCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "ErrorCollectionViewCell")
         self.collectionView?.register(UINib(nibName: "CarsCollectionViewCell", bundle: .main), forCellWithReuseIdentifier:  "CarsCollectionViewCell")
     }
     
@@ -44,7 +49,30 @@ class ListCarSimpleAdapter: NSObject, ListCarAdapterProtocol {
             let layout = UICollectionViewCompositionalLayout(section: section)
             self.collectionView?.collectionViewLayout = layout
         }
+    private func setErrorLayout() {
+//            1 - Definir layout con dimencion de la acelda
+        let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        
+//            2 - Definir layout como un item
+        let item = NSCollectionLayoutItem(layoutSize: layoutSize)
+        
+//            3 - Definir un grupo en horizontal o vertical segun direccion del scroll, es un conjunto de items.
+        let layoutGroup = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroup, subitem: item, count: 1)
+        group.interItemSpacing = .fixed(0)
+        
+//            4 - Definir la seccion que es un cojunto de grupos
+        let section = NSCollectionLayoutSection(group: group)
+        
+//            5 - Definir Atributos del CollectionView.
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        section.interGroupSpacing =  0
+        
+//            6 - Creas el Layout del collection y se lo asignas...
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        self.collectionView?.collectionViewLayout = layout
     }
+}
 
 
 /*
@@ -85,7 +113,15 @@ extension ListCarSimpleAdapter: UICollectionViewDataSource {
     //    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        CarsCollectionViewCell.buildIN(collectionView, in: indexPath, with: self.datasource[indexPath.item])
+        let item = self.datasource[indexPath.row]
+        
+        if let message = item as? String {
+            return ErrorCollectionViewCell.buildIN(collectionView, in: indexPath, with: message)
+        } else if let car = item as? Car {
+            return CarsCollectionViewCell.buildIN(collectionView, in: indexPath, with: car)
+        } else {
+            return UICollectionViewCell()
+        }
         /*
          This method is also required by the UICollectionViewDataSource protocol. It's responsible for configuring and returning a cell for a specific index path in the collection view. Here's what it does:
          Retrieves the car object from the datasource array based on the indexPath.item. This represents the index of the item (cell) within the section.

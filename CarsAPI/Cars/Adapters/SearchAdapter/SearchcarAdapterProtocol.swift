@@ -10,5 +10,6 @@ import UIKit
 protocol SearchCarAdapterProtocol: AnyObject {
     var datasource: [Car] { get set }
     func setSearchBar(_ searchBar: UISearchBar)
-    func didFilterHandler(_ handler: @escaping (_ cars: [Car]) -> Void )
+    func didFilterHandler(_ handler: @escaping (_ result: [Any]) -> Void )
 }
+ 

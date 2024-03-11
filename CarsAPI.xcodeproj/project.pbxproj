@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		291548EE2B9BA35200996B2C /* SearchAdapterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291548ED2B9BA35200996B2C /* SearchAdapterProtocol.swift */; };
+		291548EE2B9BA35200996B2C /* SearchcarAdapterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291548ED2B9BA35200996B2C /* SearchcarAdapterProtocol.swift */; };
 		291548F02B9BA35D00996B2C /* ListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291548EF2B9BA35D00996B2C /* ListAdapter.swift */; };
 		291548F72B9BAC5400996B2C /* SearchCardByInfoAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291548F62B9BAC5400996B2C /* SearchCardByInfoAdapter.swift */; };
 		291548F92B9BB70000996B2C /* SearchCardByNameYearAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291548F82B9BB70000996B2C /* SearchCardByNameYearAdapter.swift */; };
+		291548FB2B9BC58900996B2C /* ErrorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291548FA2B9BC58900996B2C /* ErrorCollectionViewCell.swift */; };
+		291548FD2B9BC5B700996B2C /* ErrorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291548FC2B9BC5B700996B2C /* ErrorCollectionViewCell.xib */; };
 		294ADEFE2B990D2A00E53B51 /* CarsViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294ADEFD2B990D2A00E53B51 /* CarsViewRepresentable.swift */; };
 		294ADF012B99198800E53B51 /* ListCarAdapterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294ADF002B99198800E53B51 /* ListCarAdapterProtocol.swift */; };
 		294ADF032B991A9000E53B51 /* ListCardGrillAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294ADF022B991A9000E53B51 /* ListCardGrillAdapter.swift */; };
@@ -34,10 +36,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		291548ED2B9BA35200996B2C /* SearchAdapterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAdapterProtocol.swift; sourceTree = "<group>"; };
+		291548ED2B9BA35200996B2C /* SearchcarAdapterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchcarAdapterProtocol.swift; sourceTree = "<group>"; };
 		291548EF2B9BA35D00996B2C /* ListAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAdapter.swift; sourceTree = "<group>"; };
 		291548F62B9BAC5400996B2C /* SearchCardByInfoAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardByInfoAdapter.swift; sourceTree = "<group>"; };
 		291548F82B9BB70000996B2C /* SearchCardByNameYearAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardByNameYearAdapter.swift; sourceTree = "<group>"; };
+		291548FA2B9BC58900996B2C /* ErrorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCollectionViewCell.swift; sourceTree = "<group>"; };
+		291548FC2B9BC5B700996B2C /* ErrorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorCollectionViewCell.xib; sourceTree = "<group>"; };
 		294ADEFD2B990D2A00E53B51 /* CarsViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsViewRepresentable.swift; sourceTree = "<group>"; };
 		294ADF002B99198800E53B51 /* ListCarAdapterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCarAdapterProtocol.swift; sourceTree = "<group>"; };
 		294ADF022B991A9000E53B51 /* ListCardGrillAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCardGrillAdapter.swift; sourceTree = "<group>"; };
@@ -77,6 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				291548EF2B9BA35D00996B2C /* ListAdapter.swift */,
+				291548FA2B9BC58900996B2C /* ErrorCollectionViewCell.swift */,
+				291548FC2B9BC5B700996B2C /* ErrorCollectionViewCell.xib */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -94,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				291548F62B9BAC5400996B2C /* SearchCardByInfoAdapter.swift */,
-				291548ED2B9BA35200996B2C /* SearchAdapterProtocol.swift */,
+				291548ED2B9BA35200996B2C /* SearchcarAdapterProtocol.swift */,
 				291548F82B9BB70000996B2C /* SearchCardByNameYearAdapter.swift */,
 			);
 			path = SearchAdapter;
@@ -265,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				297716872B891915009659BF /* LaunchScreen.storyboard in Resources */,
+				291548FD2B9BC5B700996B2C /* ErrorCollectionViewCell.xib in Resources */,
 				297716842B891915009659BF /* Assets.xcassets in Resources */,
 				297716822B891913009659BF /* Main.storyboard in Resources */,
 				294ADF092B9930A000E53B51 /* CarsCollectionViewCellRow.xib in Resources */,
@@ -291,8 +298,9 @@
 				297716982B891A28009659BF /* CarsWebService.swift in Sources */,
 				291548F02B9BA35D00996B2C /* ListAdapter.swift in Sources */,
 				2977167D2B891913009659BF /* SceneDelegate.swift in Sources */,
+				291548FB2B9BC58900996B2C /* ErrorCollectionViewCell.swift in Sources */,
 				294ADF052B991CC700E53B51 /* CarsViewControllerBuilder.swift in Sources */,
-				291548EE2B9BA35200996B2C /* SearchAdapterProtocol.swift in Sources */,
+				291548EE2B9BA35200996B2C /* SearchcarAdapterProtocol.swift in Sources */,
 				2977169D2B8948D1009659BF /* CarsCollectionViewCell.swift in Sources */,
 				294ADF0D2B9933F600E53B51 /* CarsCollectionViewCellRow.swift in Sources */,
 				291548F72B9BAC5400996B2C /* SearchCardByInfoAdapter.swift in Sources */,

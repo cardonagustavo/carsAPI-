@@ -8,7 +8,8 @@
 import UIKit
 
 protocol ListCarAdapterProtocol {
-    var datasource: [Car] { get set }
+    var datasource: [Any] { get set }
+    
     func setCollectionView(_ collectionView: UICollectionView)
     func didSelectHandler(_ handler: @escaping (_ car: Car) -> Void )
 }

@@ -64,7 +64,9 @@ class CarsViewController: UIViewController {
      */
         
        private func getAll() {
+           self.carsView.showLoading(true)
             self.webSerice.fetch { arrayCarsDTO in
+                self.carsView.showLoading(false)
                 self.carsView.reloadData(arrayCarsDTO.toCars)
             }
         }
@@ -107,7 +109,7 @@ class CarsViewController: UIViewController {
      super.init(nibName: nil, bundle: nil): Llama al
      inicializador designado de la clase base (UIViewController)
      para completar la inicialización del controlador de vista.
-     Los parámetros nibName y bundle se establecen en nil, lo que
+     Los parámetrosName y bundle se establecen en nil, lo que
      significa que el controlador de vista no utiliza un archivo
      de interfaz de usuario específico (nib) y carga la interfaz
      de usuario desde el código en su lugar.
@@ -142,6 +144,10 @@ class CarsViewController: UIViewController {
 
 
 extension CarsViewController: CarsViewDelegate {
+    func carsViewDidPullToRefresh(_ carsView: CarsView) {
+        self.getAll()
+    }
+    
     func carsView(_ carsView: CarsView, didSelectCar car: Car) {
         //TODO: - Navigate to detail of selected car    
     }

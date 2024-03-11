@@ -6,6 +6,7 @@ import UIKit
 
 protocol CarsViewDelegate: AnyObject {
     func carsView(_ carsView: CarsView, didSelectCar car: Car)
+    func carsViewDidPullToRefresh(_ carsView: CarsView)
 }
 
 class CarsView: UIView {
@@ -15,6 +16,7 @@ class CarsView: UIView {
         clv.backgroundColor = .white
         clv.showsVerticalScrollIndicator = false
         clv.translatesAutoresizingMaskIntoConstraints = false
+        clv.keyboardDismissMode = .onDrag
         return clv
     }()
     /*
@@ -28,9 +30,15 @@ class CarsView: UIView {
      precise and flexible control over the layout of the cell.
      */
     
+    private lazy var refreshControl: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(self.pullToRefresh(_:)), for: .valueChanged)
+        return refresh
+    }()
+    
     private lazy var srcCars: UISearchBar = {
         let src = UISearchBar(frame: .zero)
-        self.addElements()
+        src.translatesAutoresizingMaskIntoConstraints = false
         return src
     }()
     /*
@@ -119,6 +127,8 @@ class CarsView: UIView {
      agregar elementos adicionales a la interfaz de usuario. Este
      método podría ser responsable de configurar subvistas
      adicionales o aplicar diseños específicos a la vista.
+     
+     En resumen, agregar funcionalidad después de llamar a super.init(frame: frame) es una práctica común en la programación orientada a objetos en Swift y garantiza que tus instancias estén correctamente configuradas y en un estado coherente antes de continuar con cualquier otra operación específica de tu clase.
      */
     
     override init(frame: CGRect) {
@@ -176,17 +186,25 @@ class CarsView: UIView {
     func setupAdapters() {
         self.listAdapter?.setCollectionView(self.clvCars)
         self.searchAdapter?.setSearchBar(self.srcCars)
+        self.clvCars.addSubview(self.refreshControl)
         
         self.listAdapter?.didSelectHandler {car in
         self.delegate?.carsView(self, didSelectCar: car)
            
         }
-        self.searchAdapter?.didFilterHandler({ cars in
-            self.reloadCollectionViewWith(cars)
+        self.searchAdapter?.didFilterHandler({ result in
+            self.reloadCollectionViewWith(result)
         })
     }
+    func showLoading(_ isShow: Bool) {
+        isShow ? self.refreshControl.beginRefreshing() : self.refreshControl.endRefreshing()
+    }
     
-    private func reloadCollectionViewWith(_ datasourse: [Car]) {
+  @objc  private func pullToRefresh(_ refresHControl: UIRefreshControl) {
+      self.delegate?.carsViewDidPullToRefresh(self)
+    }
+    
+    private func reloadCollectionViewWith(_ datasourse: [Any]) {
         self.listAdapter?.datasource = datasourse
         self.clvCars.reloadData()
     }
